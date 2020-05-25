@@ -1,0 +1,17 @@
+class Solution:
+    def findTheDistanceValue(self, arr1: List[int], arr2: List[int], d: int) -> int:
+        arr1.sort()
+        arr2.sort()
+        i = j = 0
+        ret = 0
+        while i < len(arr1) and j < len(arr2):
+            if (abs(arr1[i]  -  arr2[j])) <= d:
+                i += 1
+                ret += 1
+            elif arr1[i] < arr2[j]:
+                i += 1
+            else:
+                j += 1
+        return len(arr1) - ret
+                
+                
