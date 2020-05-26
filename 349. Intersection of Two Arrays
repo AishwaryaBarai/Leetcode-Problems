@@ -1,0 +1,14 @@
+class Solution:
+    def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        l=[]
+        min_arr = set(min(nums1, nums2, key=len))
+        if min_arr == set(nums1):
+            max_arr = set(nums2)
+        else: 
+            max_arr = set(nums1)
+        for i in min_arr:
+            if i in max_arr:
+                l.append(i)
+        return l
+
+        
