@@ -1,0 +1,53 @@
+round approach:
+
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        if headA == None and headB == None:
+            return None
+        else:
+            pointerA = headA
+            pointerB = headB
+            while (pointerA != pointerB):
+                pointerA = pointerA.next
+                pointerB = pointerB.next
+                if pointerA ==None:
+                    pointerA = headB
+                elif pointerB == None:
+                    pointerB = headA
+            return pointerA
+              
+              
+              
+    //efficient:
+    
+    class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        node_count_A = self.len_of_linked_list(headA)
+        node_count_B = self.len_of_linked_list(headB)
+        
+        len_diff = abs(node_count_A - node_count_B)
+        for i in range(len_diff):
+            if node_count_A > node_count_B:
+                headA = headA.next
+            else:
+                headB = headB.next
+    
+        while headA and headB:
+            if headA == headB:
+                return headA
+            headA = headA.next
+            headB = headB.next
+        
+        
+        return None
+
+    def len_of_linked_list(self, head):
+        
+        node_count = 0
+        current = head
+        
+        while current:
+            node_count += 1
+            current = current.next
+        
+        return node_count
