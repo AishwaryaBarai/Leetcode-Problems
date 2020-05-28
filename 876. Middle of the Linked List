@@ -10,3 +10,18 @@ class Solution:
             i+=1
             head = head.next
         return head
+        
+        
+        
+      //faster:
+      
+      class Solution:
+    def middleNode(self, head: ListNode) -> ListNode:
+        slow=fast=head
+        while(slow and fast):
+            if fast.next:  # when length is even 
+                fast = fast.next.next
+            else:   # if length is odd, middle has found
+                break
+            slow = slow.next
+        return slow
