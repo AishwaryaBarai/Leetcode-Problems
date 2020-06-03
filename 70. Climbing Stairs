@@ -1,0 +1,13 @@
+using hashmap:
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n <=1:
+            return n
+        if n >= 2:
+            d = {1:1, 2:2}
+            for i in range(3,n+1):
+                curr = d[i-1] + d[i-2]
+                d[i] = curr
+            return d[n]
+            
