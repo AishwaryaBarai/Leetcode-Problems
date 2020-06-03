@@ -11,3 +11,20 @@ class Solution:
                 d[i] = curr
             return d[n]
             
+            
+            
+ class Solution:
+    def climbStairs(self, n: int) -> int:
+        if n <=1:
+            return n
+        if n >= 2:
+            curr = 2
+            prev = 1
+            for i in range(3,n+1):
+                curr = curr + prev
+                prev = curr - prev
+            return curr
+            
+            
+        
+            
