@@ -8,5 +8,19 @@ class Solution:
                 if max_profit < (prices[j]-prices[i]):
                     max_profit = (prices[j]-prices[i])
         return max_profit
+        
+        
+        
+        
+  class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        lowest_num = float("inf")
+        max_profit = 0
+        if len(prices)< 2:
+            return 0
+        for i in prices:
+            lowest_num = min(lowest_num, i)
+            max_profit = max(max_profit, (i-lowest_num))
+        return max_profit
             
         
