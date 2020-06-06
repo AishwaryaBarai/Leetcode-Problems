@@ -1,0 +1,23 @@
+class MinStack:
+
+    def __init__(self):
+        self.arr = []
+        self.min_arr = []
+        
+
+    def push(self, x: int) -> None:
+        self.arr.append(x)
+        if len(self.min_arr) == 0 or self.min_arr[-1] >= x:
+            self.min_arr.append(x)
+        
+
+    def pop(self) -> None:
+        if len(self.min_arr) !=0 and self.arr[-1] == self.min_arr[-1]:
+            self.min_arr.pop()
+        self.arr.pop()
+        
+        
+
+    def top(self) -> int:
+        return self.arr[-1]
+        
