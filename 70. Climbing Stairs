@@ -2,6 +2,18 @@ using hashmap:
 
 class Solution:
     def climbStairs(self, n: int) -> int:
+        if n <=2:
+            return n
+        else:
+            dict = {1:1,2:2}
+            for i in range(3,n+1):
+                dict[i] = dict[i-1] + dict[i-2]
+        return dict[n]
+            
+        
+
+class Solution:
+    def climbStairs(self, n: int) -> int:
         if n <=1:
             return n
         if n >= 2:
