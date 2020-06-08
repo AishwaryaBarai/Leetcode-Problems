@@ -1,0 +1,14 @@
+class Solution:
+    def isPalindromeRec(self, head, node):
+        if not node:
+            return (head, True)
+        
+        cur, is_palindrome = self.isPalindromeRec(head, node.next)
+        if not is_palindrome:
+            return (None, False)
+        if cur.val != node.val:
+            return (None, False)
+        return (cur.next, True)
+        
+    def isPalindrome(self, head: ListNode) -> bool:
+        return self.isPalindromeRec(head, head)[1]
