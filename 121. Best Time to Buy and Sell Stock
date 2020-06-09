@@ -22,5 +22,22 @@ class Solution:
             lowest_num = min(lowest_num, i)
             max_profit = max(max_profit, (i-lowest_num))
         return max_profit
+        
+        
+        
+  class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        if prices:
+            max_val = 0
+            min_val = max(prices)
+            for i in range(len(prices)):
+                if prices[i] < min_val:
+                    min_val = prices[i]
+                else:
+                    max_val = max(max_val, prices[i] - min_val)
+            return max_val
+        else: 
+            return 0
+        
             
         
