@@ -1,0 +1,24 @@
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        c = 0
+        s = 0
+        dummy = ListNode()
+        curr = dummy
+        
+        while l1 or l2 or c:
+            if (not l1 or not l2) and not c:
+                curr.next = l1 or l2
+                break
+            s = c
+            if l1:
+                s += l1.val
+                l1 = l1.next
+            if l2:
+                s += l2.val
+                l2 = l2.next
+            c = math.floor(s / 10)
+            s = s % 10
+            curr.next = ListNode(s)
+            curr = curr.next
+        
+        return dummy.next
