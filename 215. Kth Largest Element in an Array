@@ -3,3 +3,15 @@ class Solution:
         nums.sort()
         return nums[-k]
         
+
+
+class Solution:
+    def findKthLargest(self, nums, k):
+        h = []
+        for n in nums:
+            if len(h) < k:
+                heapq.heappush(h, n)
+            else:
+                heapq.heappushpop(h, n)
+        return h[0]
+        
