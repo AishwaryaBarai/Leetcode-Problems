@@ -1,0 +1,15 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        dic = {}
+        pop = dic.pop
+
+        for i in nums:
+            if i not in dic:
+                dic[i] = None
+            else:
+                del (dic[i])
+
+        return(dic.popitem()[0])
+        
+        
+  
