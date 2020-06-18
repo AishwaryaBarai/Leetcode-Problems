@@ -9,10 +9,10 @@ class Solution:
 
 dict:
 
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         dic = {}
-        len_nums = len(nums)
         i = 0
         while i < len(nums):
             val = target - nums[i]
