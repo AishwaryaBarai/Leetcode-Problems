@@ -1,4 +1,4 @@
-class Solution:
+class Solution: O(n)
     def majorityElement(self, nums: List[int]) -> int:
         digits = {}
         for i in nums:
@@ -6,3 +6,7 @@ class Solution:
             if digits[i] > len(nums)/2:
                 return i
 
+class Solution:O(nlgn)
+    def majorityElement(self, nums):
+        nums.sort()
+        return nums[len(nums)//2]
