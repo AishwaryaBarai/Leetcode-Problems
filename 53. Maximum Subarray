@@ -8,3 +8,23 @@ class Solution:
                 total_sum = max(total_sum + i, i)
                 max_sum = max(max_sum, total_sum)
             return max_sum
+
+
+
+
+DP soln:
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+        len_nums = len(nums)
+        table = [0]*(len_nums)
+        table[0] = nums[0]
+        for i in range(1,len_nums):
+            if table[i-1] >= 0:
+                table[i]=nums[i] + table[i-1]
+            else:
+                table[i]=nums[i]
+
+        return max(table)
+
+        
