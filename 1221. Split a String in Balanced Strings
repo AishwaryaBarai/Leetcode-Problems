@@ -21,3 +21,22 @@ class Solution:
             
         return final_count
             
+
+
+class Solution:
+    def balancedStringSplit(self, s: str) -> int:
+        count_R = 0
+        count_L = 0
+        final_count = 0
+        for i in s:
+            if i == 'R':
+                count_R +=1   
+            elif i == 'L':
+                count_L +=1
+            if count_R == count_L and count_R != 0 and count_L !=0:
+                    final_count +=1
+                    count_R = 0
+                    count_L = 0
+            
+        return final_count
+            
