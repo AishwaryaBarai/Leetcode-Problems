@@ -3,7 +3,7 @@ class Solution:
         nums.sort()
         return nums[-k]
         
-
+sol 2:
 
 class Solution:
     def findKthLargest(self, nums, k):
