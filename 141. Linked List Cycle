@@ -11,7 +11,9 @@ class Solution:
                 if(slow == fast):
                     return 1
         return 0
-        
+  
+  
+ soln 2: 
 
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
