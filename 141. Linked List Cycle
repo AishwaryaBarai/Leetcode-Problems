@@ -13,7 +13,7 @@ class Solution:
         return 0
   
   
- soln 2: 
+
 
 class Solution:
     def hasCycle(self, head: ListNode) -> bool:
