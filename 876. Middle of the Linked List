@@ -1,3 +1,17 @@
+2 ptr approach: o(n) and o(1)
+
+class Solution:
+    def middleNode(self, head: ListNode) -> ListNode:
+        slow = head
+        fast = head
+        while fast and fast.next != None:
+            fast = fast.next.next
+            slow = slow.next
+        return slow
+        
+
+
+
 class Solution:
     def middleNode(self, head: ListNode) -> ListNode:
         temp = head
