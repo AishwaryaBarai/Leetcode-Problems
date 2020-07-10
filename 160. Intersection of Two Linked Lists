@@ -51,3 +51,29 @@ class Solution:
             current = current.next
         
         return node_count
+        
+        
+        
+        
+       class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        if headA == None and headB == None:
+            return None
+        ptr1 = headA
+        ptr2 = headB
+        while(ptr1 != ptr2) and ptr1 and ptr2:
+            ptr1 = ptr1.next
+            ptr2 = ptr2.next
+            
+            if ptr1 == ptr2:
+                return ptr1
+            
+            if ptr1 == None:
+                ptr1 = headB
+                
+            if ptr2 == None:
+                ptr2 = headA
+                
+        return ptr1
+            
+            
