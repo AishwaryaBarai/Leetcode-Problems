@@ -1,0 +1,14 @@
+class Solution:
+    def buildArray(self, target: List[int], n: int) -> List[str]:
+        output = []
+        arr =[]
+        i = 1
+        while i <= n and len(arr) != len(target):
+            if i in target:
+                output.append('Push')
+                arr.append(i)
+            else:
+                output.append('Push')
+                output.append('Pop')
+            i+=1
+        return output
