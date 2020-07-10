@@ -12,3 +12,31 @@ class Solution:
         
     def isPalindrome(self, head: ListNode) -> bool:
         return self.isPalindromeRec(head, head)[1]
+
+
+class Solution:
+    def isPalindrome(self, head: ListNode) -> bool:
+        ptr1,ptr2 = head,head
+        while ptr1 and ptr1.next:
+            ptr1 = ptr1.next.next
+            ptr2 = ptr2.next
+        
+        ptr2 = self.reversedd(ptr2)
+        ptr1 = head
+        
+        while ptr2:
+            if ptr2.val != ptr1.val:
+                return False
+            ptr2 = ptr2.next
+            ptr1 = ptr1.next
+        return True
+
+    def reversedd(self,ptr2):
+        prev = None
+        while ptr2:
+            temp = ptr2.next
+            ptr2.next = prev
+            prev = ptr2
+            ptr2 = temp
+        return prev
+            
