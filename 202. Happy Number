@@ -1,0 +1,18 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        seen = set()
+        while n != 1:
+            curr = n
+            sum = 0
+            while curr != 0:
+                sum += (curr %10) * (curr % 10)
+                curr = curr // 10
+            print(sum)   
+            print(seen)
+            if sum in seen:
+                return False
+            
+            seen.add(sum)
+            n = sum
+            
+        return True
