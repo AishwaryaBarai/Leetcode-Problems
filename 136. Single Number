@@ -24,9 +24,9 @@ class Solution:
     def singleNumber(self, nums: List[int]) -> int:
         stack = []
         for i in nums:
-            if i in stack and stack != None:
-                stack.remove(i)
-            else:
+            if i not in stack:
                 stack.append(i)
+            else:
+                stack.remove(i)
         return stack[0]
         
