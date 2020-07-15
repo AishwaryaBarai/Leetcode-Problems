@@ -1,13 +1,13 @@
 class Solution:
     def isValid(self, s):
-        stack = []
+        stck = []
         dict = {"]":"[", "}":"{", ")":"("}
         for char in s:
             if char in dict.values():
-                stack.append(char)
+                stck.append(char)
             elif char in dict.keys():
-                if stack == [] or dict[char] != stack.pop():
+                if stck == [] or dict[char] != stck.pop():
                     return False
             else:
                 return False
-        return stack == []
+        return stck == []
