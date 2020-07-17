@@ -1,0 +1,20 @@
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        d = {}
+        for i in nums:
+            if i not in d:
+                d[i] = 1
+            else:
+                d[i] += 1
+        sorted_x = sorted(d.items(), key=lambda kv: kv[1],reverse = True)
+        ans = []
+        for i in range(k):
+            ans.append(sorted_x[i][0])
+        return ans
+                
+        
