@@ -1,0 +1,13 @@
+class Solution:
+    def countBits(self, num: int) -> List[int]:
+        res = []
+        for i in range(num +1):
+            count = 0
+            new_num = str(bin(i))
+            for j in new_num:
+                if j == '1':
+                    count+=1
+            res.append(count)
+        return res
+            
+        
