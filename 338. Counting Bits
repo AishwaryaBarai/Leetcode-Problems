@@ -11,3 +11,18 @@ class Solution:
         return res
             
         
+dp soln:
+class Solution:
+    def countBits(self, num: int) -> List[int]:
+        i = 0
+        b = 1
+        dp = [0] * (num+1)
+        while b <= num:
+            while i < b and (i+b) <= num:
+                dp[i+b] = dp[i] +1
+                i+=1
+            i = 0
+            b = b << 1
+        return dp
+                
+        
