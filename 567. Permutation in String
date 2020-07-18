@@ -1,0 +1,23 @@
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        if len(s1) > len(s2):
+            return False
+        len_s1 = len(s1)
+        counter_s1 = Counter(s1)
+        window_counter = Counter()
+        
+        for i,c in enumerate (s2):
+            window_counter[c] +=1
+            
+            if i >= len_s1:
+                left_ele = s2[i - len_s1]
+                
+                if window_counter[left_ele] == 1:
+                    del window_counter[left_ele]
+                else:
+                    window_counter[left_ele] -=1
+                    
+            if window_counter == counter_s1:
+                return True
+            
+        return False
