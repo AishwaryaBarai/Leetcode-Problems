@@ -1,0 +1,17 @@
+class Solution:
+    def countCharacters(self, words: List[str], chars: str) -> int:
+        res=0
+        hashmap = Counter(chars)
+        for word in words:
+            hash1 = Counter(word)
+            flag=True
+            for k in hash1:
+                if k in hashmap and hash1[k]<=hashmap[k]:
+                    continue
+                else:
+                    flag=False
+                    break
+            if flag:
+                res+=len(word)
+        return res
+        
