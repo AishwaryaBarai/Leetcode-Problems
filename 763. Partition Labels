@@ -1,0 +1,15 @@
+class Solution:
+    def partitionLabels(self, S: str) -> List[int]:
+        interval = []
+        start = -1
+        end = 0
+        for i in range(len(S)):
+            end = max(end, S.rfind(S[i]))
+            if i == end:
+                interval.append(end-start)
+                start = end
+        return interval
+        
+        
+        
+        
