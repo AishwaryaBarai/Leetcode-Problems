@@ -11,3 +11,16 @@ class Solution:
                 if heights[i] != target[i]:
                     count +=1
             return count
+            
+            
+  class Solution:
+    def heightChecker(self, heights: List[int]) -> int:
+        sum = 0
+        i = 0
+        sorted_height = sorted(heights)
+        while i < len(heights):
+            if heights[i] != sorted_height[i]:
+                sum +=1
+            i+=1
+        return sum
+        
