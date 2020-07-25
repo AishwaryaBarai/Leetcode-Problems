@@ -1,0 +1,11 @@
+class Solution:
+    def isBalanced(self, root: TreeNode) -> bool:
+        def get_height(root):
+            if not root:
+                return 0
+            l_ht, r_ht = get_height(root.left), get_height(root.right)
+            if l_ht < 0 or r_ht < 0 or abs(l_ht - r_ht) > 1:
+                return -1
+            return max(l_ht, r_ht) +1
+        
+        return (get_height(root) >=0)
