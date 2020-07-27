@@ -1,0 +1,12 @@
+class Solution:
+    def numWaterBottles(self, numBottles: int, numExchange: int) -> int:
+        sum = numBottles
+        while numBottles>=numExchange:
+            full = numBottles// numExchange
+            rem = numBottles % numExchange
+            sum += full
+            numBottles = full + rem
+        return sum
+        
+        
+        
