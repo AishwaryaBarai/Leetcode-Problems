@@ -13,5 +13,25 @@ class Solution:
                 num = (num) /2
                 count +=1
         return count-1
+        
+        
+        
+        
+class Solution:
+    def numberOfSteps (self, num: int) -> int:
+        if num == 0:
+            return 0
+        else:
+            step = 0
+            while num != 0:
+                if num%2 == 0:
+                    num /=2
+                    step +=1
+                else:
+                    num = (num-1) //2
+                    step +=2
+            return step-1
+                
+        
             
         
