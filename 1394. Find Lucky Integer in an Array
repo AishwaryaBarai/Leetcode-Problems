@@ -1,5 +1,20 @@
 class Solution:
     def findLucky(self, arr: List[int]) -> int:
+        dict = collections.Counter(arr)
+        res = []
+        for i in dict:
+            if i == dict[i]:
+                res.append(i)
+        if len(res) == 0:
+            return -1
+        else:
+            return max(res)
+                
+        
+        
+
+class Solution:
+    def findLucky(self, arr: List[int]) -> int:
         cnt = collections.Counter(arr)
         return max([k for k, v in cnt.items() if k == v] + [-1])
    
