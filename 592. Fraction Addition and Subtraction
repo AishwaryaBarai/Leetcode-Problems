@@ -1,0 +1,6 @@
+class Solution:
+    def fractionAddition(self, expression: str) -> str:
+        from fractions import Fraction
+        result = sum(map(Fraction, expression.replace('+', ' +').replace('-', ' -').split()))
+        return '{0}/{1}'.format(result.numerator, result.denominator)
+        
