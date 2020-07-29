@@ -1,0 +1,15 @@
+class Solution:
+    def countPrimes(self, n: int) -> int:
+        if n <2:
+            return 0
+        primes = ([False] *2) + ([True] * (n-2))
+        print(primes)
+        for i in range(2,int(sqrt(n))+1):
+            if primes[i]:
+                for j in range(i*i, n,i):
+                    primes[j] = False
+        print(primes)
+        return sum(primes)
+            
+            
+  
