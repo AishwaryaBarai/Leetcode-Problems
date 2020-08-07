@@ -15,3 +15,17 @@ class Solution:
                 heapq.heappushpop(h, n)
         return h[0]
         
+
+
+
+time complexity: o(n)
+
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heap = []
+        heapify(heap)
+        for i in nums:
+            heappush(heap,i)
+            if len(heap) > k:
+                heappop(heap)
+        return heappop(heap)
