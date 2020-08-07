@@ -1,0 +1,14 @@
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        st = i = 0
+        while i < len(chars):
+            while i < len(chars) and chars[i] == chars[st]:
+                i += 1
+            if i - st == 1:
+                st = i
+            else:
+                chars[st + 1 : i] = str(i - st)
+                st = st + 2
+                i = st
+        
+            
