@@ -1,0 +1,10 @@
+NlogN
+
+class Solution:
+    def sortedSquares(self, A: List[int]) -> List[int]:
+        res = []
+        for i in A:
+            res.append(i*i)
+        res.sort()
+        return res
+        
