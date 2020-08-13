@@ -1,0 +1,16 @@
+class Solution:
+    def reorderLogFiles(self, logs: List[str]) -> List[str]:
+        arr_digits = []
+        arr_alpha = []
+        for i in logs:
+            strn = i.split()
+            if strn[1].isdigit():
+                arr_digits.append(i)
+            else:
+                arr_alpha.append(i)
+            
+            arr_alpha.sort(key = lambda s: (s.split(' ',1)[1],s.split()[0]))
+                
+        return(arr_alpha + arr_digits)
+        
+    
