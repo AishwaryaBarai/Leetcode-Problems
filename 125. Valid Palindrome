@@ -1,0 +1,18 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        sp = string.punctuation
+        for i in s:
+            if i in sp:
+                s = s.replace(i,'')
+        s = s.replace(' ', '').lower()
+        print(s)
+        i = 0
+        j = len(s)-1
+        while i < j:
+            if s[i] == s[j]:
+                i+=1
+                j-=1
+            else:
+                return False
+        return True
+                
