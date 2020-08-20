@@ -1,0 +1,12 @@
+class Solution:
+    def removeDuplicates(self, S: str) -> str:
+        stck = []
+        for i in S:
+            if len(stck) != 0 and i == stck[-1] :
+                stck.pop()
+            else:
+                stck.append(i)
+        return ''.join(map(str,stck))
+                
+        
+
