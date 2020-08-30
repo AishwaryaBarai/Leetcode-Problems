@@ -1,0 +1,27 @@
+class Solution:
+    def reverseBetween(self, head: ListNode, m: int, n: int) -> ListNode:
+        if head == None:
+            return None
+        prev = None
+        curr = head
+        while m > 1:
+            prev = curr
+            curr = curr.next
+            m-=1
+            n-=1
+        connection = prev
+        tail = curr
+        while n > 0:
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+            n-=1
+        if connection != None:
+            connection.next = prev
+        else:
+            head = prev
+        tail.next = curr
+        return head
+        
+        
