@@ -1,0 +1,18 @@
+class Solution:
+    def relativeSortArray(self, arr1: List[int], arr2: List[int]) -> List[int]:
+        arr = []
+        d = {}
+        for i in arr2:
+            d[i] = 1
+        for j in arr1:
+            if j in d:
+                d[j] +=1
+            else:
+                arr.append(j)
+        res = []
+        for k in d:
+            while d[k] != 1:
+                res.append(k)
+                d[k] -=1
+        arr.sort()
+        return res+arr
