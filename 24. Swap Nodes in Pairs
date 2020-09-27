@@ -13,3 +13,18 @@ class Solution:
             prev = prev.next.next
         return dummy.next
          
+
+
+class Solution:
+    def swapPairs(self, head: ListNode) -> ListNode:
+        d = ListNode(0)
+        res = d
+        d.next = head
+        while d.next and d.next.next:
+            p = d.next
+            q = d.next.next
+            d.next,  p.next, q.next = q, q.next,p
+            d = p 
+        return res.next
+        
+        
