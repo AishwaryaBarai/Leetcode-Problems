@@ -1,5 +1,37 @@
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        ptr1 = l1
+        ptr2 = l2
+        carry = 0
+        ans = ListNode(0)
+        dum = ans
+        while ptr1 or ptr2:
+            if ptr1 == None:
+                ptr1 = ListNode(0)
+            if ptr2 == None:
+                ptr2 = ListNode(0)
+            summ = ptr1.val + ptr2.val + carry
+            suma = summ % 10
+            carry = summ //10
+            ans.next = ListNode(suma)
+            ans = ans.next
+            ptr1 = ptr1.next
+            ptr2 = ptr2.next
+        if carry:
+            ans.next = ListNode(carry)
+        return dum.next
+
+
+
+
+
+
+
+
+
+
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         c = 0
         s = 0
         dummy = ListNode()
