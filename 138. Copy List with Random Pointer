@@ -1,0 +1,18 @@
+class Solution:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head: return None
+        p1 = head
+        dic = {}
+        while p1 != None:
+            newNode = Node(p1.val, None, None)
+            dic[p1] = newNode
+            p1 = p1.next
+        p2 = head
+        while p2 != None:
+            new_p2 = dic[p2]
+            if p2.next != None:
+                new_p2.next = dic[p2.next]
+            if p2.random != None:
+                new_p2.random = dic[p2.random]
+            p2 = p2.next
+        return dic[head]
