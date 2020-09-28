@@ -1,0 +1,44 @@
+class Solution:
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        stack1 = []
+        stack2 = []
+        while l1:
+            stack1.append(l1.val)
+            l1 = l1.next
+        while l2:
+            stack2.append(l2.val)
+            l2 = l2.next
+        res = ListNode(0)
+        fres = res
+        carry = 0
+        while stack1 and stack2:
+            summ = stack1.pop() + stack2.pop() + carry
+            #print(summ)
+            carry = summ//10
+            num = summ %10
+            res.next = ListNode(num)
+            res = res.next
+            #print(res)
+        if stack1:
+            while stack1:
+                summ = stack1.pop() + carry 
+                res.next = ListNode(summ%10)
+                carry = summ//10
+                res = res.next
+        if stack2:
+            while stack2:
+                summ = stack2.pop() + carry 
+                res.next = ListNode(summ%10)
+                carry = summ//10
+                res = res.next
+        if carry:
+            res.next = ListNode(carry)
+        curr = fres.next
+        prev = None
+        while curr:
+            temp = curr.next
+            curr.next = prev
+            prev = curr
+            curr = temp
+        return prev
+            
