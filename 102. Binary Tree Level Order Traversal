@@ -44,3 +44,33 @@ class Solution:
             if len(a) !=0:
                 res.append(a)
         return res
+        
+        
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        res = []
+        if not root:
+            return res
+        stack = []
+        stack.append(root)       
+        while stack:
+            l = []
+            n = len(stack)
+            for i in range(n):
+                curr = stack.pop(0)
+                l.append(curr.val)
+                if curr.left:
+                    stack.append(curr.left)
+                if curr.right:
+                    stack.append(curr.right)
+                
+              
+            res.append(l)
+        return res
+        
