@@ -1,0 +1,13 @@
+class Solution:
+    def minSteps(self, s: str, t: str) -> int:
+        res = []
+        c = collections.Counter(t)
+        for i in s:
+            c[i]-=1
+        for j in c:
+            while c[j] >0:
+                res.append(j)
+                c[j]-=1
+        return len(res)
+            
+        
