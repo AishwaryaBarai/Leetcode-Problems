@@ -16,3 +16,14 @@ class Solution:
                 i+=1
         return res
         
+
+class Solution:
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        res = []
+        d = collections.Counter(nums1)
+        for i in nums2:
+            if i in d and d[i] >0:
+                d[i]-=1
+                res.append(i)
+        return res
+            
