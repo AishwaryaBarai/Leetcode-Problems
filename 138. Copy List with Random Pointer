@@ -16,3 +16,22 @@ class Solution:
                 new_p2.random = dic[p2.random]
             p2 = p2.next
         return dic[head]
+        
+        
+   class Solution:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        if not head:
+            return None
+        d = {}
+        curr = head
+        while curr:
+            d[curr] = Node(curr.val,None,None)
+            curr = curr.next
+        curr = head
+        while curr:
+            if curr.next:
+                d[curr].next = d[curr.next]
+            if curr.random:
+                d[curr].random  = d[curr.random]
+            curr = curr.next
+        return d[head]
