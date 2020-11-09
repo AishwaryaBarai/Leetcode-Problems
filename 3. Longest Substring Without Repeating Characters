@@ -11,3 +11,19 @@ class Solution:
             max_length = max(max_length, len(str_list))
 
         return max_length
+
+
+class Solution:
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        max_len = 0
+        d = {}
+        i = 0
+        j = 0
+        while j < len(s):
+            if s[j] in d:
+                i = max(d[s[j]],i)
+            max_len = max(max_len,j-i+1)
+            d[s[j]] = j+1
+            j+=1
+        return max_len
+        
