@@ -1,0 +1,16 @@
+class Solution:
+    def fourSumCount(self, A: List[int], B: List[int], C: List[int], D: List[int]) -> int:
+        count = 0
+        d = {}
+        for a in A:
+            for b in B:
+                if a+b in d:
+                    d[a+b] +=1
+                else:
+                    d[a+b] = 1
+        for c in C:
+            for e in D:
+                if (-(c+e)) in d:
+                    count+= d[-(c+e)]
+        return count
+        
