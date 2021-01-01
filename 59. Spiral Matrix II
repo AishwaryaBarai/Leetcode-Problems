@@ -1,0 +1,38 @@
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        matrix = [[0 for x in range(n)] for y in range(n)] 
+        colstart = 0
+        colend = n-1
+        rowstart = 0
+        rowend = n-1
+        counter = 1
+        while rowstart<= rowend and colstart<= colend:
+            for i in range(colstart,colend+1):
+                matrix[rowstart][i] = counter
+                counter+=1
+            rowstart+=1
+            for i in range(rowstart,rowend+1):
+                matrix[i][colend] = counter
+                counter+=1
+            colend-=1
+            
+            if rowstart <= rowend:
+                i = colend
+                while i >=colstart:
+                    matrix[rowend][i] = counter
+                    counter+=1
+                    i-=1
+            rowend-=1
+            if colstart <= colend:
+                i = rowend
+                while i >= rowstart:
+                    matrix[i][colstart] = counter
+                    counter +=1
+                    i-=1
+            colstart +=1
+        return matrix
+                
+                
+    
+            
+        
