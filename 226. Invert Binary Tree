@@ -8,3 +8,17 @@ class Solution:
             
             return root
         
+
+
+class Solution:
+    def invertTree(self, root: TreeNode) -> TreeNode:
+        stack = []
+        stack.append(root)
+        while stack:
+            node = stack.pop()
+            if node:
+                node.left,node.right = node.right,node.left
+                stack.append(node.left)
+                stack.append(node.right)
+        return root
+        
