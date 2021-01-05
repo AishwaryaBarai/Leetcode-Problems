@@ -1,0 +1,22 @@
+class Solution:
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        
+        left = self.depth(root.left)
+        right = self.depth(root.right)
+        
+        left_dia = self.diameterOfBinaryTree(root.left)
+        right_dia = self.diameterOfBinaryTree(root.right)
+        
+        return max((left + right), max(left_dia,right_dia))
+        
+        
+        
+    def depth(self,node):
+        if not node:
+            return 0
+        left = self.depth(node.left)
+        right = self.depth(node.right)
+        
+        return max(left,right) +1
