@@ -1,0 +1,38 @@
+class Solution:
+    def reorganizeString(self, S: str) -> str:
+        c = collections.Counter(S)
+        heap = []
+        
+        
+        for k,v in c.items():
+            heap.append([-v,k])
+            
+        heapq.heapify(heap)
+        
+        res = ''
+        
+        while heap:
+            
+            if len(heap) >=2:
+                val1 = heapq.heappop(heap)
+                res+=val1[1]
+                val2 = heapq.heappop(heap)
+                res +=val2[1]
+                
+                val1[0]+=1
+                val2[0] +=1
+                
+                if val1[0] != 0:
+                    heapq.heappush(heap,[val1[0], val1[1]])
+                    
+                if val2[0] != 0:
+                    heapq.heappush(heap,[val2[0],val2[1]])
+                    
+            elif len(heap) ==1:
+                val1 = heapq.heappop(heap)
+                res +=val1[1]
+                val1[0] +=1
+                if val1[0] !=0:
+                    return ''
+                return res
+        return res
