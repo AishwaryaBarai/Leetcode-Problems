@@ -1,0 +1,20 @@
+class Solution:
+    def findCircleNum(self, isConnected: List[List[int]]) -> int:
+        
+        no_prov = 0
+        for i in range(len(isConnected)):
+            for j in range(len(isConnected[0])):
+                if isConnected[i][j] == 1:
+                    no_prov +=1
+                    self.dfs(isConnected,i,j)
+                             
+        return no_prov
+    
+    
+    def dfs(self, connected,i,j):
+        connected[i][j] = 0
+        for k in range(len(connected)):
+            if connected[j][k] == 1:
+                self.dfs(connected,j,k)
+                             
+                             
