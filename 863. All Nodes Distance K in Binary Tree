@@ -1,0 +1,58 @@
+class Solution(object):
+    def distanceK(self, root, target, K):
+        def dfs(node, par = None):
+            if node:
+                node.par = par
+                dfs(node.left, node)
+                dfs(node.right, node)
+
+        dfs(root)
+
+        queue = collections.deque([(target, 0)])
+        seen = {target}
+        while queue:
+            if queue[0][1] == K:
+                return [node.val for node, d in queue]
+            node, d = queue.popleft()
+            for nei in (node.left, node.right, node.par):
+                if nei and nei not in seen:
+                    seen.add(nei)
+                    queue.append((nei, d+1))
+
+        return []
+        
+        
+        
+ class Solution:
+    def distanceK(self, root: TreeNode, target: TreeNode, K: int) -> List[int]:
+        visited = set()
+        res = []
+        parent = {}
+        self.findparent(root,parent)
+        self.helper(target,K,visited,parent,res)
+        
+        return res
+    
+    def findparent(self,node,parent):
+        if not node:
+            return
+        if node.left:
+            parent[node.left] = node
+        if node.right:
+            parent[node.right] = node
+        self.findparent(node.left,parent)
+        self.findparent(node.right,parent)
+        
+    def helper(self, node, k ,visited,parent,res):
+        if node in visited:
+            return
+        if k == 0:
+            res.append(node.val)
+            return
+        visited.add(node)
+        if node.left:
+            self.helper(node.left, k-1, visited, parent, res)
+        if node.right:
+            self.helper(node.right, k-1, visited, parent, res)    
+        if node in parent:
+            self.helper(parent[node], k-1, visited, parent, res)
