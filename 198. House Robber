@@ -32,3 +32,18 @@ class Solution:
             nums[i] += max(nums[:i-1])
         return max(nums) if nums else 0
         
+        
+        
+ class Solution:
+    def rob(self, nums: List[int]) -> int:
+        prevMax = 0
+        curmax = 0
+        for i in nums:
+            temp = curmax
+            curmax = max(prevMax+i,curmax)
+            prevMax = temp
+        return curmax
+        
+        
+
+        
