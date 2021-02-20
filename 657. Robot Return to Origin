@@ -9,3 +9,24 @@ class Solution:
             return False
         
         
+
+
+class Solution:
+    def judgeCircle(self, moves: str) -> bool:
+        U = 0
+        L = 0
+        for i in moves:
+            if i == 'L':
+                L+=1
+            elif i == 'R':
+                L-=1
+            elif i == 'U':
+                U +=1
+            elif i == 'D':
+                U-=1
+        if U == 0 and L == 0:
+            return True
+        else:
+            return False
+            
+        
