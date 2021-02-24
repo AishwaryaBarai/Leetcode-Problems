@@ -13,3 +13,22 @@ class Solution:
         return a==a[::-1]
                 
                 
+
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        res = 0
+        for i in range(len(s)):
+            res += self.aroundcenter(s,i,i)
+            res += self.aroundcenter(s,i,i+1)
+        return res
+            
+    def aroundcenter(self,ss,l,h):
+        ans = 0
+        while l >=0 and h < len(ss):
+            if ss[l] != ss[h]:
+                break
+            l-=1
+            h+=1
+            
+            ans+=1
+        return ans
