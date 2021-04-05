@@ -1,0 +1,12 @@
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        cars = sorted(zip(position,speed))
+        n = len(cars)
+        ans = []
+        for i in range(n-1,-1,-1):
+            p, s = cars[i]
+            arrival_time = (target-p)/s
+            if not ans or arrival_time > ans[-1]:
+                ans.append(arrival_time)
+        return len(ans)
+        
