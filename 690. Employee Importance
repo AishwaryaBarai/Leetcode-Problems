@@ -1,0 +1,13 @@
+class Solution:
+    def getImportance(self, employees: List['Employee'], id: int) -> int:
+        d = {}
+        for i in range(len(employees)):
+            d[employees[i].id] = employees[i]
+        return self.dfs(id,d)
+            
+    def dfs(self,eid,d):
+        for sub in d[eid].subordinates:
+            d[eid].importance += self.dfs(sub,d)
+        return d[eid].importance
+        
+        
