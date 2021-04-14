@@ -1,0 +1,16 @@
+class Solution:
+    def numSplits(self, s: str) -> int:
+        c1 = collections.Counter()
+        c2 = collections.Counter(s)
+        res = 0
+        for i in s:
+            c1[i] +=1
+            c2[i] -=1
+            
+            if c2[i] == 0:
+                c2.pop(i)
+            
+            if len(c1) == len(c2):
+                res +=1
+                
+        return res
