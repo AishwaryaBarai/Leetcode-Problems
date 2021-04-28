@@ -1,0 +1,15 @@
+class Solution:
+    def longestStrChain(self, words: List[str]) -> int:
+        d = {word:1 for word in words}
+        words.sort(key = len)
+        ans = 1
+        for word in words:
+            for i in range(len(word)):
+                prev = word[:i] + word[i+1:]
+                if prev in d:
+                    d[word] = max(d[prev] +1, d[word])
+                    ans = max(ans,d[word])
+        return ans
+                    
+            
+        
