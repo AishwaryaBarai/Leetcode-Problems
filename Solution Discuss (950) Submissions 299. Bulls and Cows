@@ -1,0 +1,18 @@
+class Solution:
+    def getHint(self, secret: str, guess: str) -> str:
+        d = collections.Counter(secret)
+        bull = 0
+        cow = 0
+        for idx,ch in enumerate(guess):
+            if ch in d:
+                if ch == secret[idx]:
+                    bull +=1
+                    cow -= int(d[ch] <= 0)
+                    
+                else:
+                    cow += int(d[ch] > 0)
+                d[ch]-=1
+                    
+        return "{}A{}B".format(bull,cow)
+    
+    
