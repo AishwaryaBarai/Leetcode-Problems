@@ -14,3 +14,24 @@ class Solution:
                 res +=1
                 
         return res
+
+
+class Solution:
+    def numSplits(self, s: str) -> int:
+        d = collections.Counter(s)
+        count = 0
+        res = {}
+        for i in s:   
+            if i in res:
+                res[i] +=1
+            else:
+                res[i] = 1
+            d[i]-=1
+            if d[i] == 0:
+                del d[i]
+            if len(res) == len(d):
+                count +=1
+                        
+        return count
+            
+                        
