@@ -1,0 +1,16 @@
+class Solution:
+    def countNodes(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        count = 0
+        stack = [root]
+        while stack:
+            curr = stack.pop()
+            count +=1
+            if curr.left:
+                stack.append(curr.left)
+            if curr.right:
+                stack.append(curr.right)
+        return count
+                
+                
