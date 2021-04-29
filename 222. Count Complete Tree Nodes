@@ -14,3 +14,24 @@ class Solution:
         return count
                 
                 
+class Solution:
+    def countNodes(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        
+        def leftcount(root):
+            if root:
+                return 1+ leftcount(root.left)
+            return 0
+        def rightcount(root):
+            if root:
+                return 1+ rightcount(root.right)
+            return 0
+        
+        lc = leftcount(root)
+        rc = rightcount(root)
+        if lc == rc:
+            return pow(2,lc)-1
+        
+        return 1 + self.countNodes(root.left) + self.countNodes(root.right)
+        
