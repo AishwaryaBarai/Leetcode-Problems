@@ -1,0 +1,23 @@
+class Solution:
+    def delNodes(self, root: TreeNode, to_delete: List[int]) -> List[TreeNode]:
+        remaining = []
+        to_delete = set(to_delete)
+        self.remove_node(root,to_delete,remaining)
+        if root.val not in to_delete:
+            remaining.append(root)
+        return remaining
+    
+    def remove_node(self,root,to_delete,remaining):
+        if not root:
+            return None
+        root.left = self.remove_node(root.left,to_delete,remaining)
+        root.right = self.remove_node(root.right,to_delete,remaining)
+        if root.val in to_delete:
+            if root.left:
+                remaining.append(root.left)
+            if root.right:
+                remaining.append(root.right)
+            return None
+        return root
+        
+        
