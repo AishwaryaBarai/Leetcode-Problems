@@ -1,0 +1,31 @@
+class Solution:
+    def closedIsland(self, grid: List[List[int]]) -> int:
+        
+        def dfs(i,j, visited):
+            if (i,j) in visited:
+                return 
+            if not self.isvalidland and (i == 0 or j == 0 or i == m-1 or j == n-1):
+                self.isvalidland = True
+            visited.add((i,j))
+            
+            for x,y in directions:
+                if 0 <= i+x < m and 0 <= j+y < n and grid[i+x][j+y] == 0:
+                    dfs( i+x, j+y, visited )
+            
+        
+        if not grid:
+            return 0
+        m = len(grid)
+        n = len(grid[0])
+        count = 0
+        visited = set()
+        directions = [(0,1),(1,0),(0,-1),(-1,0)]
+        for i in range(m):
+            for j in range(n):
+                self.isvalidland = False
+                if (i,j) not in visited and grid[i][j] == 0:
+                    dfs(i,j,visited)
+                    count += 1 if(not self.isvalidland) else 0
+        return count
+    
+    
