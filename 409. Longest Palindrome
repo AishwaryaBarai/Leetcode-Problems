@@ -1,0 +1,16 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        c = collections.Counter(s)
+        odd = False
+        res = 0
+        for i in c.values():
+            if i %2 != 0:
+                odd = True
+                res += i-1
+            else:
+                res += i
+        if odd:
+            return res+1
+        else:
+            return res
+        
