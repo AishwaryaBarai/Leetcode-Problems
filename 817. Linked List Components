@@ -10,3 +10,22 @@ class Solution(object):
             cur = cur.next
 
         return ans
+
+
+
+class Solution:
+    def numComponents(self, head: ListNode, nums: List[int]) -> int:
+        nums = set(nums)
+        x = 0
+        res = 0
+        n = head
+        while n:
+            if n.val in nums:
+                x=1
+            else:
+                res += x
+                x = 0
+            n = n.next
+        res += x
+        return res
+  
