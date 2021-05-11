@@ -17,3 +17,18 @@ class Solution:
             dummy = dummy.next
         return head.next
         
+
+
+class Solution:
+    def mergeKLists(self, lists: List[ListNode]) -> ListNode:
+        h = [(l.val,idx) for idx,l in enumerate(lists) if l]
+        heapq.heapify(h)
+        head = curr = ListNode(0)
+        while h:
+            val,idx = heapq.heappop(h)
+            curr.next = ListNode(val)
+            curr = curr.next
+            node = lists[idx] = lists[idx].next]
+            if node:
+                heapq.heappush(h,(node.val,idx))
+        return head.next
