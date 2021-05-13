@@ -14,3 +14,17 @@ class Solution:
         return i
         
         
+        
+        n_subsequences = 0
+        state = defaultdict(list)
+        for word in words:
+            state[word[0]].append(word[1:])
+        for char in S:
+            old_bucket = state[char]
+            state[char] = []
+            for suffix in old_bucket:
+                if not suffix:
+                    n_subsequences += 1
+                else:
+                    state[suffix[0]].append(suffix[1:])
+        return n_subsequences
