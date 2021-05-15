@@ -1,0 +1,23 @@
+class Solution:
+    def getMaximumGold(self, grid: List[List[int]]) -> int:
+        self.max_sum = 0
+        
+        def helper(row,col,sum = 0):
+            if not( 0<= row<len(grid) and 0<= col< len(grid[0]) and grid[row][col] >0):
+                self.max_sum = max(self.max_sum,sum)
+                return
+            
+            sum += grid[row][col]
+            grid[row][col] *= -1
+            helper(row+1,col,sum)
+            helper(row-1,col,sum)
+            helper(row,col+1,sum)
+            helper(row,col-1,sum)
+            grid[row][col] *= -1
+         
+        
+        for row in range(len(grid)):
+            for col in range(len(grid[0])):
+                if grid[row][col] != 0:
+                    helper(row,col)
+        return self.max_sum
