@@ -1,0 +1,21 @@
+class Solution:
+    def longestUnivaluePath(self, root: TreeNode) -> int:
+        self.ans = 0
+        
+        def arrowlen(node):
+            if not node:
+                return 0
+            left_len = arrowlen(node.left)
+            right_len = arrowlen(node.right)
+            leftarrow = 0
+            rightarrow = 0
+            if node.left and node.left.val == node.val:
+                leftarrow = left_len + 1
+            if node.right and node.right.val == node.val:
+                rightarrow = right_len + 1
+            self.ans = max(self.ans,leftarrow + rightarrow)
+            
+            return max(leftarrow,rightarrow)
+        
+        arrowlen(root)
+        return self.ans
