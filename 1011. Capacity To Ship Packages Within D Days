@@ -1,0 +1,18 @@
+class Solution:
+    def shipWithinDays(self, weights: List[int], D: int) -> int:
+        low = max(weights)
+        high = sum(weights)
+        while low < high:
+            mid = low + (high-low)//2
+            current = 0
+            days = 1
+            for w in weights:
+                if current + w> mid:
+                    days +=1
+                    current = 0
+                current += w
+            if days > D:
+                low = mid + 1
+            else:
+                high = mid
+        return low
