@@ -1,0 +1,19 @@
+
+class Solution:
+    def postorder(self, root: 'Node') -> List[int]:
+        if not root:
+            return None
+        stack = [root]
+        res = []
+        while stack:
+            root = stack.pop()
+            if root:
+                res.append(root.val)
+            for c in root.children:
+                stack.append(c)
+        return res[::-1]
+        
+        
+        
+        
+        
