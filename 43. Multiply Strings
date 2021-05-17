@@ -1,0 +1,22 @@
+class Solution:
+    def multiply(self, num1: str, num2: str) -> str:
+        if num1 == '0' or num2 == '0':
+            return '0'
+        def decode(num):
+            ans = 0
+            for i in num:
+                ans = ans*10 + (ord(i) - ord('0'))
+            return ans
+        
+        def encode(s):
+            ret = ''
+            while s:
+                a = s%10
+                s = s//10
+                ret = chr(ord('0') + a) + ret
+            return ret
+            
+            
+        return encode(decode(num1) * decode(num2))
+            
+        
