@@ -1,0 +1,42 @@
+class Solution:
+    def longestIncreasingPath(self, matrix: List[List[int]]) -> int:
+        if not matrix or not matrix[0]:
+            return 0
+        M = len(matrix)
+        N = len(matrix[0])
+        dp = [[0]*N for i in range(M)]
+        
+        def dfs(i,j):
+            if not dp[i][j]:
+                val = matrix[i][j]
+                
+                if i > 0 and val > matrix[i-1][j]:
+                    up = dfs(i-1,j)
+                else:
+                    up = 0
+                if i < M-1 and val > matrix[i+1][j]:
+                    down = dfs(i+1,j)
+                else:
+                    down = 0
+                if j > 0 and val > matrix[i][j-1]:
+                    left = dfs(i,j-1)
+                else:
+                    left = 0
+                if j < N-1 and val > matrix[i][j+1]:
+                    right = dfs(i,j+1)
+                else:
+                    right = 0
+                
+                dp[i][j] = 1+ max(up,down,right,left)
+            return dp[i][j]
+                    
+                
+        
+        
+        res = []
+        for x in range(M):
+            for y in range(N):
+                res.append(dfs(x,y))
+        return max(res)
+                                   
+                            
