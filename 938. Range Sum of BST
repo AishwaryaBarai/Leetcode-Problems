@@ -4,6 +4,26 @@ class Solution:
         stack = [root]
         while stack:
             curr = stack.pop()
+            if curr:
+                if low <= curr.val <= high:
+                    res += curr.val
+                if curr.val < high:
+                    stack.append(curr.right)
+                if curr.val > low:
+                    stack.append(curr.left)
+        return res
+        
+
+
+
+
+
+class Solution:
+    def rangeSumBST(self, root: TreeNode, low: int, high: int) -> int:
+        res = 0
+        stack = [root]
+        while stack:
+            curr = stack.pop()
             if low <= curr.val <= high:
                 res += curr.val
             if curr.left:
