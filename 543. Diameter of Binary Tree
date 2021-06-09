@@ -1,4 +1,22 @@
 class Solution:
+    ans = 0
+    def diameterOfBinaryTree(self, root: TreeNode) -> int:
+        self.helper(root)
+        if not self.ans:
+            return 0
+        else:
+            return self.ans -1
+    
+    def helper(self,root):
+        if not root:
+            return 0
+        left = self.helper(root.left)
+        right = self.helper(root.right)
+        self.ans = max(self.ans,left+right +1)
+        return max(left,right) +1
+
+
+class Solution:
     def diameterOfBinaryTree(self, root: TreeNode) -> int:
         if not root:
             return 0
