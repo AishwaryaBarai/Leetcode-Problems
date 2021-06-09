@@ -1,0 +1,14 @@
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        d = dict({'b':0,'a':0,'l':0,'o':0,'n':0})
+        for i in text:
+            if i in ['b','a','l','o','n']:
+                d[i] +=1
+                
+        d['l'] //= 2
+        d['o']//=2
+        
+        return min(d.values())
+        
+        
+        
