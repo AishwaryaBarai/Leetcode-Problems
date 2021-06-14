@@ -18,3 +18,29 @@ class Solution:
                     end = mid - 1
         return -1
         
+
+
+class Solution:
+    def search(self, nums: List[int], target: int) -> int:
+        i = 1
+        while i < len(nums) and nums[i-1] < nums[i]:
+            i+=1
+        if target >= nums[0]:
+            return self.helper(target,0,i-1,nums)
+        elif target < nums[0]:
+            return self.helper(target,i,len(nums)-1,nums)
+
+        
+        
+    def helper(self,target,start,end,nums):
+        if end >= start:
+            mid = (end + start)//2
+            if nums[mid] == target:
+                return mid
+            if target > nums[mid]:
+                return self.helper(target,mid+1,end,nums)
+            else:
+                return self.helper(target,start,mid-1,nums)
+        else:
+            return -1
+            
