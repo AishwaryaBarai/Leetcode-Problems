@@ -15,3 +15,22 @@ class Solution:
                 h = h.right
 
         return root
+        
+        
+       class Solution:
+    def flatten(self, root: TreeNode) -> None:
+        if not root:
+            return
+        h = root
+        stack = [root.right,root.left]
+        h.left = None
+        while stack:
+            node = stack.pop()
+            if node:
+                stack.extend([node.right,node.left])
+                h.right = node
+                h.left = None
+                h = h.right
+        return root
+            
+        
