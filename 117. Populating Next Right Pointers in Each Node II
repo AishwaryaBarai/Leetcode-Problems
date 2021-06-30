@@ -1,0 +1,16 @@
+class Solution:
+    def connect(self, root: 'Node') -> 'Node':
+        if not root:
+            return
+        q = [root]
+        while q:
+            l = len(q)
+            for _ in range(l):
+                node = q.pop(0)
+                if _ != (l-1):
+                    node.next = q[0]
+                if node.left:
+                    q.append(node.left)
+                if node.right:
+                    q.append(node.right)
+        return root
