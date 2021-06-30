@@ -1,0 +1,16 @@
+class Solution:
+    def cloneGraph(self, node: 'Node') -> 'Node':
+        mapping = {}
+        def helper(node):
+            if not node:
+                return node
+            elif id(node) in mapping:
+                return mapping[id(node)]
+            mapping[id(node)] = Node(node.val,[])
+            for original_neighbor in node.neighbors:
+                mapping[id(node)].neighbors.append(helper(original_neighbor))
+                
+            return mapping[id(node)]  
+
+        return helper(node)
+        
