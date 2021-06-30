@@ -12,3 +12,15 @@ class Solution:
                     start = start.next
                     slow = slow.next
                 return slow
+
+
+class Solution:
+    def detectCycle(self, head: ListNode) -> ListNode:
+        visited = set()
+        curr = head
+        while curr and curr.next:
+            if curr in visited:
+                return curr
+            visited.add(curr)
+            curr = curr.next
+            
