@@ -1,0 +1,13 @@
+class Solution:
+    def minDeletions(self, s: str) -> int:
+        count = 0
+        c = collections.Counter(s)
+        seen = set()
+        for i in c.values():
+            while i in seen:
+                count +=1
+                i-=1
+            if i:
+                seen.add(i)
+        return count
+        
