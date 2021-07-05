@@ -1,0 +1,38 @@
+class TrieNode:
+    def __init__(self):
+        self.childNode = {}
+        self.isWordEnd = False   
+    
+class Trie:
+
+    def __init__(self):
+        self.root = TrieNode()
+        
+
+    def insert(self, word: str) -> None:
+        currNode = self.root
+        for ch in word:
+            node = currNode.childNode.get(ch,TrieNode())
+            currNode.childNode[ch] = node
+            currNode = node
+        currNode.isWordEnd = True
+
+    def search(self, word: str) -> bool:
+        currNode = self.root
+        for ch in word:
+            node = currNode.childNode.get(ch)
+            if not node:
+                return False
+            currNode = node
+        return currNode.isWordEnd
+        
+
+    def startsWith(self, prefix: str) -> bool:
+        currNode = self.root
+        for ch in prefix:
+            node = currNode.childNode.get(ch)
+            if not node:
+                return False
+            currNode = node
+
+        return True
