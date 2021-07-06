@@ -1,0 +1,11 @@
+class Solution:
+    def maximalNetworkRank(self, n: int, roads: List[List[int]]) -> int:
+        res = 0
+        d = {i: set() for i in range(n)}
+        for x,y in roads:
+            d[x].add(y)
+            d[y].add(x)
+        for i in range(n-1):
+            for j in range(i+1,n):
+                res = max(res,len(d[i]) + len(d[j]) - (j in d[i]))
+        return res
