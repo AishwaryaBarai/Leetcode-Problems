@@ -42,3 +42,16 @@ class Solution: O(n2)
                     dp[i] = max(dp[i], 1+dp[j])
         return max(dp)
         
+
+
+class Solution:
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        sub = []
+        for num in nums:
+            i = bisect_left(sub,num)
+            if i == len(sub):
+                sub.append(num)
+            else:
+                sub[i] = num
+        return len(sub)
+        
