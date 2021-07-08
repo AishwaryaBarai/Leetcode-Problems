@@ -42,4 +42,12 @@ class Solution:
         
         return self.validate(node.right,node.val,high) and self.validate(node.left,low,node.val)
     
+    
+    
+        def isValidBST(self, root: TreeNode,low = -math.inf,high = math.inf) -> bool:
+        if not root:
+            return True
+        if not(low < root.val<high):
+            return False
+        return self.isValidBST(root.left,low,root.val) and self.isValidBST(root.right,root.val,high)
         
