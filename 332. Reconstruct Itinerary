@@ -1,0 +1,17 @@
+class Solution:
+    def findItinerary(self, tickets: List[List[str]]) -> List[str]:
+        
+        def helper(stop):
+            while flights[stop]:
+                helper(flights[stop].pop())
+            res.append(stop)
+        
+        
+        flights = defaultdict(list)
+        for fr, to in sorted(tickets,reverse = True):
+            flights[fr].append(to)
+        res = []
+        helper('JFK')
+        return res[::-1]
+        
+ 
