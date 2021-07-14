@@ -1,5 +1,19 @@
 class Solution:
     def reverseWords(self, s: str) -> str:
+        arr = []
+        s = s.split(' ')
+        for i in reversed(range(len(s))):
+            if s[i] == '':
+                continue
+            else:
+                arr.append(s[i])
+        return ' '.join(arr)
+            
+        
+
+
+class Solution:
+    def reverseWords(self, s: str) -> str:
         #print(s)
         s = s.split()
         #print(s)
