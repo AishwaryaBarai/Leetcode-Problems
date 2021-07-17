@@ -38,3 +38,17 @@ class Solution:
             if max_left[i-1] <= min_right[i]:
                 return i
         
+        
+        
+        class Solution:
+    def partitionDisjoint(self, nums: List[int]) -> int:
+        maxx = nums[0]
+        allmax = nums[0]
+        sol = 1
+        for i in range(1,len(nums)):
+            if nums[i] < maxx:
+                sol = i+1
+                maxx = allmax
+            else:
+                allmax = max(allmax,nums[i])
+        return sol
