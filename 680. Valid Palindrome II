@@ -1,0 +1,17 @@
+class Solution:
+    def validPalindrome(self, s: str) -> bool:
+        def verify(s,i,j,deleted):
+            while i < j:
+                if s[i] != s[j]:
+                    if deleted:
+                        return False
+                    else:
+                        return verify(s,i+1,j,True) or verify(s,i,j-1,True)
+                else:
+                    i+=1
+                    j-=1
+            return True
+            
+        return verify(s,0,len(s)-1,False)
+        
+  
