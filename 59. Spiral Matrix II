@@ -32,7 +32,44 @@ class Solution:
             colstart +=1
         return matrix
                 
-                
+     
+     
+class Solution:
+    def generateMatrix(self, n: int) -> List[List[int]]:
+        i = 0
+        res = [[None]*n for _ in range(n)]
+        left = 0
+        top = 0
+        bottom = n-1
+        right = n-1
+        say = 1
+        while say <= n*n:
+            i = left
+            while i <= right:
+                res[top][i] = say
+                say +=1
+                i+=1
+            top+=1
+            i = top
+            while i <= bottom:
+                res[i][right] = say
+                say +=1
+                i+=1
+            right-=1
+            i = right
+            while i >= left:
+                res[bottom][i] = say
+                say +=1
+                i-=1
+            bottom-=1
+            i = bottom
+            while i >= top:
+                res[i][left] = say
+                say +=1
+                i-=1
+            left+=1   
+        return res
+            
     
             
         
