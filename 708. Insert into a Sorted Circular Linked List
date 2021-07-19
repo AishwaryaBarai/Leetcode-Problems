@@ -1,0 +1,28 @@
+class Solution:
+    def insert(self, head: 'Node', insertVal: int) -> 'Node':
+        if not head: 
+            node_added = Node(val=insertVal)
+            node_added.next = node_added
+            return node_added
+        
+        
+        node = head
+        insert = False
+        while True: 
+            if (node.val <= insertVal <= node.next.val): 
+                insert = True
+            elif node.val > node.next.val: 
+                if insertVal <= node.next.val or node.val <= insertVal: 
+                    insert = True
+            elif node.next == head:
+                insert = True
+            
+            if insert: 
+                temp = node.next
+                node_added = Node(val = insertVal, next = temp)
+                node.next = node_added
+                break
+            else:
+                node = node.next
+        
+        return head
