@@ -1,0 +1,15 @@
+class Solution:
+    def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
+        stack = []
+        curr = original_head = head
+        for _ in range(k):
+            if not curr:
+                return original_head
+            stack.append(curr)
+            curr = curr.next
+        rethead = temp = ListNode()
+        while stack:
+            rethead.next = stack.pop()
+            rethead = rethead.next
+        rethead.next = self.reverseKGroup(curr,k) if curr else None
+        return temp.next
