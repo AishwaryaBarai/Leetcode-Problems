@@ -1,0 +1,8 @@
+class Solution:
+    def singleNumber(self, nums: List[int]) -> int:
+        seen_once = seen_twice = 0
+        for i in nums:
+            seen_once = ~seen_twice & (seen_once^i)
+            seen_twice = ~seen_once & (seen_twice ^i)
+        return seen_once
+        
