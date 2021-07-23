@@ -1,0 +1,22 @@
+class Solution:
+    def reverseWords(self, s: List[str]) -> None:
+        self.reverse(s,0,len(s)-1)
+        self.reverseWord(s)
+        
+        
+    def reverse(self,s,i,j):
+        while i < j:
+            s[i],s[j] = s[j],s[i]
+            i+=1
+            j-=1
+        
+    def reverseWord(self,s):
+        i = 0
+        j = 0
+        while i < len(s):
+            while j < len(s) and s[j] != ' ':
+                j+=1
+            self.reverse(s,i,j-1)
+            i=j+1
+            j+=1
+
