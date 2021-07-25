@@ -40,4 +40,37 @@ class Solution:
             return (curr + prev) /2
         else:
             return float(curr)
+   
+   
+   
+   class Solution:
+    def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
+        if len(nums1) > len(nums2):
+            return self.findMedianSortedArrays(nums2,nums1)
+        x = len(nums1)
+        y = len(nums2)
         
+        low = 0
+        high = x
+        
+        while low <= high:
+            partitionX = (low + high)//2
+            partitionY = (x+y +1)//2 - partitionX
+            
+            max_leftX = -math.inf if partitionX == 0 else nums1[partitionX-1]
+            min_rightX = math.inf if partitionX == x else nums1[partitionX]
+            
+            max_leftY = -math.inf if partitionY == 0 else nums2[partitionY-1]
+            min_rightY = math.inf if partitionY == y else nums2[partitionY]
+            
+            if max_leftX <= min_rightY and max_leftY <= min_rightX:
+                if (x+y) %2 ==0:
+                    return (max(max_leftX,max_leftY) + min(min_rightX,min_rightY))/2
+                else:
+                    return max(max_leftX,max_leftY)
+            elif max_leftX > min_rightY:
+                high = partitionX-1
+            else:
+                low = partitionX+1
+                
+            
