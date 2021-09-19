@@ -27,3 +27,26 @@ class Solution:
                 N = N % count
         return cells
             
+
+
+class Solution:
+    def prisonAfterNDays(self, cells: List[int], n: int) -> List[int]:
+        if n > 14:
+            n = n%14
+        if n == 0:
+            n = 14
+        temp = 0
+        while n > 0:
+            for i in range(len(cells)):
+                if i ==0 or i == len(cells)-1:
+                    temp = cells[i]
+                    cells[i] = 0
+                elif (temp == 0 and cells[i+1] == 0) or (temp == 1 and cells[i+1] == 1):
+                    temp = cells[i]
+                    cells[i] = 1
+                else:
+                    temp = cells[i]
+                    cells[i] = 0
+            n-=1
+        return cells
+                
