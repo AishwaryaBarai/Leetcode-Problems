@@ -1,0 +1,20 @@
+class Solution:
+    def maxProfit(self, inventory, orders: int) -> int:
+        left = 0
+        right = max(inventory)
+        while right - left > 1:
+            middle = (left + right) // 2
+            sold_balls = sum(i - middle for i in inventory if i > middle)
+            if sold_balls > orders:
+                left = middle
+            else:
+                right = middle
+        sold_balls = 0
+        total_value = 0
+        for i in inventory:
+            if i > right:
+                sold_balls += i - right
+                total_value += (i + right + 1) * (i - right) // 2
+        if sold_balls < orders:
+            total_value += (orders - sold_balls) * right
+        return total_value % 1_000_000_007
