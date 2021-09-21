@@ -1,0 +1,21 @@
+class FirstUnique:
+
+    def __init__(self, nums: List[int]):
+        self.d = collections.Counter(nums)
+        
+
+    def showFirstUnique(self) -> int:
+        for i in self.d:
+            if self.d[i] == 1:
+                return i
+                break
+        return -1
+                
+        
+
+    def add(self, value: int) -> None:
+        if value in self.d:
+            self.d[value]+=1
+        else:
+            self.d[value] = 1
+        
